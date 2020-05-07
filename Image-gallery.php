@@ -65,7 +65,7 @@
         //Moving the file
         //move_uploaded_files returns false if something went wrong
         if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
-            $message = 'File uploaded successfully';
+            $message = "<p class='p-3 mb-2 bg-success text-white' id='para-width'><strong>File uploaded successfully<strong></p>";
         } else {
             $error = $_FILES['file_upload']['error'];
             $message = $upload_errors[$error];
@@ -79,18 +79,6 @@
 		// print_r($_FILES['file_upload']);
 		// echo "</pre>";
      // end of if
-    }
-
-    //start at current directory 
-    $dir = "uploads";
-    if (is_dir($dir)) {
-        if ($dir_handle = opendir($dir)) {
-            while ($filename = readdir($dir_handle)) {
-                if(!is_dir($filename)) {
-                    echo "<img src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
-                }
-            }
-        } closedir($dir_handle);
     }
 
     
@@ -108,6 +96,22 @@
 
         </div>
     </form>
+
+    <?php
+        // displaying the images 
+        //start at current directory 
+        $dir = "uploads";
+        if (is_dir($dir)) {
+            if ($dir_handle = opendir($dir)) {
+                while ($filename = readdir($dir_handle)) {
+                    if(!is_dir($filename)) {
+                        echo "<img src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
+                    }
+                }
+            } closedir($dir_handle);
+        }
+    
+    ?>
 
 </div>
 </body>
