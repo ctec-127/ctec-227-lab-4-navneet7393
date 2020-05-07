@@ -20,7 +20,8 @@
 </head>
 
 <body>
-	<h1>Image Gallery</h1>
+    <h1>Image Gallery</h1>
+
 
 	<?php 
 
@@ -43,7 +44,7 @@
 							UPLOAD_ERR_INI_SIZE  		=> "Larger than upload_max_filesize.",
 							UPLOAD_ERR_FORM_SIZE 		=> "Larger than form MAX_FILE_SIZE.",
 							UPLOAD_ERR_PARTIAL 			=> "Partial upload.",
-							UPLOAD_ERR_NO_FILE 			=> "No file.",
+							UPLOAD_ERR_NO_FILE 			=> "<p class='p-3 mb-2 bg-danger text-white' id='para-width'><strong>No file.<strong></p>",
 							UPLOAD_ERR_NO_TMP_DIR 		=> "No temporary directory.",
 							UPLOAD_ERR_CANT_WRITE 		=> "Can't write to disk.",
 							UPLOAD_ERR_EXTENSION 		=> "File upload stopped by extension.");
@@ -65,10 +66,9 @@
         //move_uploaded_files returns false if something went wrong
         if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
             $message = 'File uploaded successfully';
-        }else{
-        $error = $_FILES['file_upload']['error'];
-        //error that we selected 
-        $message = $upload_errors['error'];
+        } else {
+            $error = $_FILES['file_upload']['error'];
+            $message = $upload_errors[$error];
     }  
         
     
@@ -87,24 +87,29 @@
         if ($dir_handle = opendir($dir)) {
             while ($filename = readdir($dir_handle)) {
                 if(!is_dir($filename)) {
-                    echo "<img src=\"$filename\" alt=\"A photo\">";
-                } else {
-                    echo "folder: {$filename}</br>"; 
+                    echo "<img src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
                 }
             }
         } closedir($dir_handle);
     }
+
+    
     
 	?>
-
+    
+    
 	<?php if(!empty($message)) {echo "<p>{$message}</p>";} ?>
 	<form action="" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="MAX_FILE_SIZE" value="100000000">
-		<input type="file" name="file_upload">
-		<input type="submit" class="btn btn-dark" name="submit" value="Upload">
-	</form>
+        <input type="hidden"  name="MAX_FILE_SIZE" value="100000000">
+        <div class="custom-file">
+        <input type="file" class="custom-file-input" name="file_upload">
+        <label class="custom-file-label"></label>
+        <input type="submit" class="btn btn-dark" name="submit" value="Upload">
 
+        </div>
+    </form>
 
+</div>
 </body>
 
 
