@@ -15,23 +15,29 @@ body {
 
 form {
     padding-top: 5px;
-    padding-right: 300px;
-    padding-left: 300px;
+    padding-right: 500px;
+    padding-left: 500px;
 }
 
 .btn-dark {
     margin: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 #para-width {
-    margin-right: 300px;
-    margin-left: 300px;
+    margin-right: 500px;
+    margin-left: 500px;
 }
 
-img {
+.p-2 {
     border: 1px solid rgb(57, 0, 163);
     border-radius: 4px;
     padding: 5px;
     margin: 10px;
   }
+
+h1 {
+    padding-top: 200px;
+    display: inline-flex;
+}
+
