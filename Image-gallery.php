@@ -20,11 +20,12 @@
 </head>
 
 <body>
+    <img src="img/imageedit_1_3709156988.png" class="upload-img" alt="upload-img" height="150">
     <h1>Image Gallery</h1>
 
 
 	<?php 
-
+    $error = "";
 	// Error Codes
 	// See http://www.php.net/manual/en/features.file-upload.errors.php
 
@@ -98,6 +99,10 @@
     </form>
 
     <?php
+
+if (isset($_GET['file'])) {
+    unlink("uploads/" . $_GET['file']);
+}
         // displaying the images 
         //start at current directory 
         $dir = "uploads";
@@ -105,16 +110,19 @@
             if ($dir_handle = opendir($dir)) {
                 while ($filename = readdir($dir_handle)) {
                     if(!is_dir($filename)) {
-                        echo "<img src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
+                        echo "<img class='p-2' src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
+                        echo "<a href=\"image-gallery.php?file=$filename\">Delete</a>";
                     }
                 }
             } closedir($dir_handle);
         }
-    
+
+
     ?>
 
 </div>
 </body>
+
 
 
 </html>
