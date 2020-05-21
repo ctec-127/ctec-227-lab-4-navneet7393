@@ -20,11 +20,11 @@
 </head>
 
 <body>
-    <img src="img/imageedit_1_3709156988.png" class="upload-img" alt="upload-img" height="150">
+    <img src="./img/imageedit_1_3709156988.png" class="upload-img" alt="upload-img" height="150">
     <h1>Image Gallery</h1>
 
 
-	<?php 
+	<?phpq
     $error = "";
 	// Error Codes
 	// See http://www.php.net/manual/en/features.file-upload.errors.php
@@ -101,7 +101,13 @@
     <?php
 
 if (isset($_GET['file'])) {
+    //Note: files are deleted permanently. If we want to create a backup:
+    // copy('uploads/' . $_GET['file'], 'backup/' . $_GET['file']);
+
     unlink("uploads/" . $_GET['file']);
+    header('Location:image-gallery.php'); //redirection of the page to not show the url
+} else {
+    echo "";
 }
         // displaying the images 
         //start at current directory 
@@ -110,11 +116,13 @@ if (isset($_GET['file'])) {
             if ($dir_handle = opendir($dir)) {
                 while ($filename = readdir($dir_handle)) {
                     if(!is_dir($filename)) {
+                        $filename = urlencode($filename);
                         echo "<img class='p-2' src=\"uploads/$filename\" alt=\"A photo\" height=\"200\">";
                         echo "<a href=\"image-gallery.php?file=$filename\">Delete</a>";
                     }
                 }
-            } closedir($dir_handle);
+                closedir($dir_handle);
+            } 
         }
 
 
