@@ -1,0 +1,43 @@
+/* image-gallery css */
+
+body {
+    text-align: center;
+    vertical-align: middle;
+    background-image: url('https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+/* input.custom-file-label {
+    width: 50%;
+} */
+
+form {
+    padding-top: 5px;
+    padding-right: 500px;
+    padding-left: 500px;
+}
+
+.btn-dark {
+    margin: 5px;
+    margin-bottom: 100px;
+}
+
+#para-width {
+    margin-right: 500px;
+    margin-left: 500px;
+}
+
+.p-2 {
+    border: 1px solid rgb(57, 0, 163);
+    border-radius: 4px;
+    padding: 5px;
+    margin: 10px;
+  }
+
+h1 {
+    padding-top: 200px;
+    display: inline-flex;
+}
+
