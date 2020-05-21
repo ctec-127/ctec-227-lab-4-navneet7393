@@ -16,7 +16,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
 </head>
 
 <body>
@@ -54,36 +54,23 @@
 
         // We need to move the temp file 
         // What file do we need to move
-    if(isset($_POST['submit'])){
-        $name       = $_FILES['file_upload']['name'];  
-        $temp_name  = $_FILES['file_upload']['tmp_name'];  
-        if(isset($name) and !empty($name)){
-            $upload_dir = 'uploads';      
-            if(move_uploaded_file($temp_name, $upload_dir.$name)){
-                echo 'File uploaded successfully';
-            }
+        $tmp_file = $_FILES['file_upload']['tmp_name'];
+
+        // set target file name
+        //basename just gets the file name
+        $target_file = basename($_FILES['file_upload']['name']);
+
+        //set upload folder name
+        $upload_dir = 'uploads';
+
+        //Moving the file
+        //move_uploaded_files returns false if something went wrong
+        if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
+            $message = "<p class='p-3 mb-2 bg-success text-white' id='para-width'><strong>File uploaded successfully<strong></p>";
         } else {
-            echo 'You should select a file to upload !!';
-        }
-    }
-
-    //     $tmp_file = $_FILES['file_upload']['tmp_name'];
-
-    //     // set target file name
-    //     //basename just gets the file name
-    //     $target_file = basename($_FILES['file_upload']['name']);
-
-    //     //set upload folder name
-    //     $upload_dir = 'uploads';
-
-    //     //Moving the file
-    //     //move_uploaded_files returns false if something went wrong
-    //     if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
-    //         $message = "<p class='p-3 mb-2 bg-success text-white' id='para-width'><strong>File uploaded successfully<strong></p>";
-    //     } else {
-    //         $error = $_FILES['file_upload']['error'];
-    //         $message = $upload_errors[$error];
-    // }  
+            $error = $_FILES['file_upload']['error'];
+            $message = $upload_errors[$error];
+    }  
         
     
 

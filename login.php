@@ -16,33 +16,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $db->query($sql);
     if ($result->num_rows == 1) {
 
-        $_SESSION['loggedin'] = 1;
-        $_SESSION['email'] = $email;
+        // $_SESSION['loggedin'] = 1;
 
         $row = $result->fetch_assoc();
+        $_SESSION['email'] = $email;
         $_SESSION['first_name'] = $row['first_name'];
 
-        header('location: home.php');
+        header('location: image-gallery.php');
     } else {
         echo '<p>Please try again or go away</p>';
     }
 }
 
+
+
+
 ?>
-
-<!-- <form action="login.php" method="POST">
-    <label for="email">Email</label>
-    <br><br>
-    <input type="email" name="email" id="email" required>
-    <br><br>
-    <label for="password">Password</label>
-    <span id="showPassword" onclick="showPassword();">Show Password</span>
-    <br><br>
-    <input type="password" name="password" id="password" required>
-    <br><br>
-    <input type="submit" value="Login">
-</form> -->
-
 
 <div class="container login">
         <div class="row">
@@ -58,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="row login-form">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                <form action="image-gallery.php" method="POST">
+                                <form action="login.php" method="POST">
                                     <div class="form-group">
                                         <label for="email">Email :</label>
                                         <input type="email" id="email" class="form-control" placeholder="First Name *" required name="email">

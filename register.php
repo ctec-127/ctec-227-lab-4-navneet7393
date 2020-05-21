@@ -14,14 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     VALUES('$email','$first_name','$last_name','$password')";
 
     // echo $sql;
-    $result = $db->query($sql);
+    $result = $db->query($sql); 
 
-    // if (!$result) {
-    //     echo "<div>There was a problem registering your account</div>";
-    // } else {
-    //     echo "<div>You are now ready to go!</div>";
-    //     echo '<a href="login.php" title="Login Page">Login</a>';
-    // }
+
 }
 ?>
 
@@ -46,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             if (!$result) {
                                                 echo "<div class= 'alert alert-danger'>There was a problem registering your account</div>";
                                             } else {
-                                                echo "<div class='alert alert-success'>You are successfully registered Please login to view your account !</div>";
+                                                echo "<div class='alert alert-success'>You are successfully registered Please login to view your account .!</div>";
                                                 echo '<a href="login.php" title="Login Page">Login</a>';
                                             }
                                         }
