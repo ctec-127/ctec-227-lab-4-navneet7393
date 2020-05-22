@@ -17,12 +17,24 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style2.css">
-</head>
 
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="login.php" id="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" id="logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
     <img src="./img/imageedit_1_3709156988.png" class="upload-img" alt="upload-img" height="150">
     <h1>Image Gallery</h1>
-
 
 	<?php 
     $error = "";
