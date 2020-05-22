@@ -29,4 +29,7 @@ require_once("inc/header.inc.php");
 <?php require_once('inc/navbar.inc.php'); ?>
 <h1>Image Gallery Home</h1>
 <div class="success">You have been logged out from Image Gallery</div>
+<a href="register.php">Register</a>
+<a href="login.php" id="login">Login</a>
+<a href="" id="logout">Logout</a>
 <?php require_once('inc/footer.inc.php') ?>
