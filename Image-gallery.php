@@ -27,7 +27,7 @@
         <a class="nav-link" href="login.php" id="login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="" id="logout">Logout</a>
+        <a class="nav-link" href="logout.php" id="logout">Logout</a>
       </li>
     </ul>
   </div>
