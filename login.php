@@ -5,10 +5,7 @@ $pageTitle = 'Login';
 require 'inc/header.inc.php';
 require_once 'inc/db_connect.inc.php';
 
-$success = false;
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 
     $email = $db->real_escape_string($_POST['email']);
     $password = hash('sha512', $db->real_escape_string($_POST['password']));
@@ -27,10 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         header('location: image-gallery.php');
     } else {
-        echo "<p class='text-center alert alert-danger'><strong>Please enter correct login credentials</strong></p>";
+        echo '<p>Please try again or go away</p>';
     }
-
-  
 }
 
 
