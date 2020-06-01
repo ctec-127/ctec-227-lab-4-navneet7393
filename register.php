@@ -16,6 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // echo $sql;
     $result = $db->query($sql); 
 
+    if (!is_dir('uploads/' . 'uploads')) {
+        mkdir('uploads/' . $email);
+    }
 
 }
 ?>
@@ -47,11 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         }
                                         ?> <br><br>
                                         <label for="email">Email :</label>
-                                        <input type="email" id="email" class="form-control" placeholder="First Name *" required name="email">
+                                        <input type="email" id="email" class="form-control" placeholder="Email *" required name="email">
                                         </div>      
                                         <div class="form-group">
                                         <label for="password">Password :</label>
-                                        <input type="password" id="password" class="form-control" placeholder="First Name *" required name="password">
+                                        <input type="password" id="password" class="form-control" placeholder="Password *" required name="password">
                                         </div>
                                         <div class="form-group">
                                         <label for="first_name">First Name : </label>
@@ -59,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         </div>  
                                         <div class="form-group">
                                         <label for="last_name">Last Name :</label>
-                                        <input type="text" id="last_name" class="form-control" placeholder="First Name *" required name="last_name">
+                                        <input type="text" id="last_name" class="form-control" placeholder="Last Name *" required name="last_name">
                                         </div>  
                                         <input class="registerBtn" type="submit" value="Register" name="register">
                                     </form>
