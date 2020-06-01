@@ -16,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // echo $sql;
     $result = $db->query($sql); 
 
+    if (!is_dir('uploads/' . $email)) {
+        mkdir('uploads/' . $email);
+    }
+
 
 }
 ?>
