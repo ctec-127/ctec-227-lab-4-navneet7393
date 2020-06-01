@@ -20,8 +20,24 @@
 </head>
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="home.php" id="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php" id="logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
     <img src="./img/imageedit_1_3709156988.png" class="upload-img" alt="upload-img" height="150">
     <h1>Image Gallery</h1>
+    
 
 
 	<?php 
@@ -54,23 +70,37 @@
 
         // We need to move the temp file 
         // What file do we need to move
-        $tmp_file = $_FILES['file_upload']['tmp_name'];
+        // $tmp_file = $_FILES['file_upload']['tmp_name'];
 
         // set target file name
         //basename just gets the file name
-        $target_file = basename($_FILES['file_upload']['name']);
+        // $target_file = basename($_FILES['file_upload']['name']);
 
         //set upload folder name
-        $upload_dir = 'uploads';
+        // $upload_dir = 'uploads';
 
         //Moving the file
         //move_uploaded_files returns false if something went wrong
-        if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
-            $message = "<p class='p-3 mb-2 bg-success text-white' id='para-width'><strong>File uploaded successfully<strong></p>";
+    //     if (move_uploaded_file($tmp_file, $upload_dir . "/" . $target_file)){
+    //         $message = "<p class='p-3 mb-2 bg-success text-white' id='para-width'><strong>File uploaded successfully<strong></p>";
+    //     } else {
+    //         $error = $_FILES['file_upload']['error'];
+    //         $message = $upload_errors[$error];
+    // }  
+
+    if(isset($_POST['submit'])){
+        $name       = $_FILES['file_upload']['name'];  
+        $temp_name  = $_FILES['file_upload']['tmp_name'];  
+        if(isset($name) and !empty($name)){
+            $upload_dir = 'uploads/' . $_POST['email'];      
+            if(move_uploaded_file($temp_name, $upload_dir.$name)){
+                echo "<p class='p-3 mb-2 bg-success text-white' id='para-width'>File uploaded successfully</p>";
+            }
         } else {
-            $error = $_FILES['file_upload']['error'];
-            $message = $upload_errors[$error];
-    }  
+            echo "<p class='p-3 mb-2 bg-danger text-white' id='para-width'>Select a file to upload !!</p>";
+        }
+    }
+    
         
     
 
